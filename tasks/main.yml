@@ -1,2 +1,39 @@
 ---
 # tasks file for ansible-role-postfix-sendgrid
+
+- name: Ensure that the needed packages are present
+  apt:
+    name:
+      - postfix
+      - mutt
+      - libsasl2-modules
+      - ssl-cert
+
+- name: Ensure that the mailname is configured
+  copy:
+    dest: /etc/mailname
+    content: "{{ postfix_mailname }}"
+
+- name: Ensure that the credentials are configured
+  copy:
+    dest: /etc/postfix/sasl_passwd
+    content: >
+      [smtp.sendgrid.net]:587 {{ sendgrid_user }}:{{ sendgrid_password }}
+    mode: 0600
+  register: updated_passwd
+
+- name: Ensure postfix hashtables are updated
+  command: /usr/sbin/postmap /etc/postfix/sasl_passwd
+  when: updated_passwd is changed
+
+- name: Ensure the postfix config is present
+  template:
+    src: main.cf.j2
+    dest: /etc/postfix/main.cf
+  notify: restart postfix
+
+- name: Ensure postfix is started and enbled
+  service:
+    name: postfix
+    state: started
+    enabled: true
