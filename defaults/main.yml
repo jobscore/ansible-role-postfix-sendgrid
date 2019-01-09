@@ -1,2 +1,6 @@
 ---
 # defaults file for ansible-role-postfix-sendgrid
+
+postfix_mailname: "{{ inventory_hostname }}"
+sendgrid_user: user
+sendgrid_password: passwd
