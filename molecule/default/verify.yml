@@ -1,0 +1,15 @@
+---
+- hosts: all
+  roles:
+    - role: ansible-role-postfix-sendgrid
+      postfix_mailname: ubuntu
+  post_tasks:
+    - name: Check for postfix conf file
+      stat:
+        path: /etc/postfix/main.cf
+      register: postfix_conf_check
+
+    - name: Ensure postfix conf exists
+      fail:
+        msg: "The postfix conf file does not exist"
+      when: postfix_conf_check.stat.exists == False
