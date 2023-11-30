@@ -7,8 +7,9 @@ verify_ssl = true
 
 [packages]
 ansible = "*"
-molecule = "*"
-docker-py = "*"
+molecule-docker = "*"
+yamllint = "*"
+'molecule-plugins[docker]' = "*"
 
 [requires]
-python_version = "2.7"
+python_version = "3.12"

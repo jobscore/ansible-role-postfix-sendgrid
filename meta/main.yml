@@ -1,17 +1,19 @@
 ---
 galaxy_info:
-  author: Eric Magalhães
+  author: Eric Magalhães and Glauber Batista
   description: Ansible Role for configuring Postfix as a Sendgrid relay on Ubuntu
   company: JobScore Inc
   license: license (MIT)
+  namespace: jobscore
   role_name: postfix_sendgrid
 
-  min_ansible_version: 1.2
+  min_ansible_version: 2.10
   platforms:
     - name: Ubuntu
       versions:
         - bionic
-        - xenial
+        - focal
+        - jammy
   galaxy_tags:
     - ubuntu
     - postfix

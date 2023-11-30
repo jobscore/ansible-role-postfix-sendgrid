@@ -1,7 +1,5 @@
 # Postfix Sendgrid
 
-[![Build Status](https://travis-ci.org/jobscore/ansible-role-postfix-sendgrid.svg?branch=master)](https://travis-ci.org/jobscore/ansible-role-postfix-sendgrid)
-
 Ansible Role for configuring Postfix as a Sendgrid relay on Ubuntu
 
 ## Requirements
@@ -18,8 +16,6 @@ TBD
 - hosts: servers
   roles:
     - role: jobscore.postfix_sendgrid
-
-
 ```
 
 ## License
