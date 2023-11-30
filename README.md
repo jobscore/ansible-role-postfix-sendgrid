@@ -1,5 +1,7 @@
 # Postfix Sendgrid
 
+[![CI](https://github.com/jobscore/ansible-role-postfix-sendgrid/actions/workflows/ci.yml/badge.svg)](https://github.com/jobscore/ansible-role-postfix-sendgrid/actions/workflows/ci.yml)
+
 Ansible Role for configuring Postfix as a Sendgrid relay on Ubuntu
 
 ## Requirements
